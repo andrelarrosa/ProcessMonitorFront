@@ -41,23 +41,31 @@ function Home() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Status do Processo</h1>
-      {data && data.namesAndIds ? (
-        <div className="bg-gray-100 p-4 rounded shadow">
-            <ul>
+    <h1 className="text-2xl font-bold mb-4">Status do Processo</h1>
+    {data && data.namesAndIds ? (
+      <div className="overflow-x-auto bg-gray-100 p-4 rounded shadow">
+        <table className="min-w-full divide-y divide-gray-300">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">Nome do Processo</th>
+              <th className="px-4 py-2 text-left text-sm font-semibold text-gray-700">ID do Processo</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
             {data.namesAndIds.map((process, index) => (
-                <li key={index} className="py-2">
-                <strong>Nome do Processo:</strong> {process.name} <br />
-                <strong>ID do Processo:</strong> {process.id}
-                </li>
+              <tr key={index} className="hover:bg-gray-50">
+                <td className="px-4 py-2 text-sm text-gray-800">{process.name}</td>
+                <td className="px-4 py-2 text-sm text-gray-800">{process.id}</td>
+              </tr>
             ))}
-            </ul>
-        </div>
-        ) : (
-        <p>Aguardando atualizações...</p>
-        )
-      }
-    </div>
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p>Aguardando atualizações...</p>
+    )}
+  </div>
+  
   );
 }
 
